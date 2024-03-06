@@ -30,7 +30,7 @@ class HomeView extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Sign In',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20, fontFamily: 'Pacifico'),
                   ),
                 ),
                 SizedBox(height: 30),
