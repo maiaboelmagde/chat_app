@@ -40,8 +40,8 @@ class HomeView extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Don\'t have an account,'),
-                    Text('Create one'),
+                    Text('Don\'t have an account ? .. '),
+                    Text('Sign Up'),
                   ],
                 )
               ],
