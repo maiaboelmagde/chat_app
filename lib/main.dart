@@ -1,4 +1,5 @@
 import 'package:chat_app/views/login_view.dart';
+import 'package:chat_app/views/register_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,7 +26,11 @@ class MyApp extends StatelessWidget {
               onBackground: Color(0xff314F6A),
               surface: Color(0xff314F6A),
               onSurface: Color(0xff314F6A))),
-      home: const LoginView(),
+      routes: {
+        'RegisterView': (context) => RegisterView(),
+        'LoginView': (context) => LoginView()
+      },
+      initialRoute: 'LoginView',
     );
   }
 }
