@@ -1,4 +1,4 @@
-import 'package:chat_app/views/home_view.dart';
+import 'package:chat_app/views/login_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,8 +11,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeView(),
+    return MaterialApp(
+      theme: ThemeData(
+          colorScheme: const ColorScheme(
+              brightness: Brightness.light,
+              primary: Color(0xff314F6A),
+              onPrimary: Color(0xff314F6A),
+              secondary: Color(0xff314F6A),
+              onSecondary: Color(0xff314F6A),
+              error: Color(0xff314F6A),
+              onError: Color(0xff314F6A),
+              background: Color(0xff314F6A),
+              onBackground: Color(0xff314F6A),
+              surface: Color(0xff314F6A),
+              onSurface: Color(0xff314F6A))),
+      home: const LoginView(),
     );
   }
 }

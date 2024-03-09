@@ -7,11 +7,16 @@ class TextFieldCustom extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-        hintText: hint,
-        border: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.blue),
-        ),
-      ),
+          hintText: hint,
+          hintStyle: const TextStyle(color: Colors.white),
+          border: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white),
+          ),
+          enabledBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white),
+          ),
+          focusedBorder:
+              OutlineInputBorder(borderSide: BorderSide(color: Colors.white))),
     );
   }
 }
