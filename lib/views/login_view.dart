@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:chat_app/constants.dart';
 import 'package:chat_app/views/register_view.dart';
 import 'package:chat_app/widgets/custom_button.dart';
 import 'package:chat_app/widgets/text_field_custom.dart';
@@ -11,21 +12,24 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      backgroundColor: kPrimaryColor,
+      body: ListView(
         children: [
-          Center(
-            child: Column(
-              children: [
-                Image.asset('assets/images/scholar.png'),
-                const Text(
-                  'Scolar Chat',
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontFamily: 'Pacifico',
-                      color: Colors.white),
-                ),
-              ],
+          Padding(
+            padding: const EdgeInsets.only(top: 80),
+            child: Center(
+              child: Column(
+                children: [
+                  Image.asset('assets/images/scholar.png'),
+                  const Text(
+                    'Scolar Chat',
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontFamily: 'Pacifico',
+                        color: Colors.white),
+                  ),
+                ],
+              ),
             ),
           ),
           const SizedBox(height: 50),
