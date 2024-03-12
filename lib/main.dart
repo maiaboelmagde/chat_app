@@ -1,8 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:chat_app/firebase_options.dart';
 import 'package:chat_app/views/login_view.dart';
 import 'package:chat_app/views/register_view.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -27,10 +31,10 @@ class MyApp extends StatelessWidget {
       //         surface: Color(0xff314F6A),
       //         onSurface: Color(0xff314F6A))),
       routes: {
-        'RegisterView': (context) => RegisterView(),
-        'LoginView': (context) => LoginView()
+        RegisterView.id: (context) => RegisterView(),
+        LoginView.id: (context) => const LoginView()
       },
-      initialRoute: 'LoginView',
+      initialRoute: LoginView.id,
     );
   }
 }

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
+  static const String id = 'LoginView';
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +68,7 @@ class LoginView extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(context, 'RegisterView');
+                  Navigator.pushNamed(context, RegisterView.id);
                 },
               ),
             ],

@@ -4,10 +4,16 @@ import 'package:chat_app/constants.dart';
 import 'package:chat_app/views/login_view.dart';
 import 'package:chat_app/widgets/custom_button.dart';
 import 'package:chat_app/widgets/text_field_custom.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class RegisterView extends StatelessWidget {
-  const RegisterView({super.key});
+  RegisterView({super.key});
+  String? email;
+  String? password;
+
+  static const String id = 'RegisterView';
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +39,10 @@ class RegisterView extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 50),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Column(children: [
-              Align(
+              const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'Sign Up',
@@ -46,14 +52,32 @@ class RegisterView extends StatelessWidget {
                       color: Colors.white),
                 ),
               ),
-              SizedBox(height: 30),
-              TextFieldCustom(hint: 'Email'),
-              SizedBox(height: 30),
-              TextFieldCustom(hint: 'Password'),
-              SizedBox(height: 30),
-              TextFieldCustom(hint: 'Confirm Password'),
-              SizedBox(height: 30),
-              CustomButton(text: 'Sign Up'),
+              const SizedBox(height: 30),
+              TextFieldCustom(
+                hint: 'Email',
+                onchanged: (data) {
+                  email = data;
+                },
+              ),
+              const SizedBox(height: 30),
+              TextFieldCustom(
+                hint: 'Password',
+                onchanged: (data_2) {
+                  password = data_2;
+                },
+              ),
+              const SizedBox(height: 30),
+              const TextFieldCustom(hint: 'Confirm Password'),
+              const SizedBox(height: 30),
+              CustomButton(
+                text: 'Sign Up',
+                ontap: () async {
+                  try {
+                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                        email: email!, password: password!);
+                  } on FirebaseAuthException catch (e) {}
+                },
+              ),
             ]),
           ),
           Row(
