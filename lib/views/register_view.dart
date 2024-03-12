@@ -1,8 +1,10 @@
 import 'dart:developer';
 
 import 'package:chat_app/constants.dart';
+import 'package:chat_app/services/registeruser_using_firebase.dart';
 import 'package:chat_app/views/login_view.dart';
 import 'package:chat_app/widgets/custom_button.dart';
+import 'package:chat_app/widgets/show_snack_bar.dart';
 import 'package:chat_app/widgets/text_field_custom.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -73,9 +75,18 @@ class RegisterView extends StatelessWidget {
                 text: 'Sign Up',
                 ontap: () async {
                   try {
-                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                        email: email!, password: password!);
-                  } on FirebaseAuthException catch (e) {}
+                    await registerUser(email!, password!);
+                  } on FirebaseAuthException catch (e) {
+                    String? message;
+                    if (e.code == 'weak-password')
+                      message =
+                          "The password provided is so weak , it should contain 6 letters at least";
+                    else if (e.code == 'email-already-in-use')
+                      message = "That email already hase an account";
+                    showSnackBar(context, message ?? e.toString());
+                  } catch (e) {
+                    showSnackBar(context, e.toString());
+                  }
                 },
               ),
             ]),
