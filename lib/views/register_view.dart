@@ -92,6 +92,7 @@ class RegisterView extends StatelessWidget {
                       } catch (e) {
                         showSnackBar(context, e.toString());
                       }
+                      showSnackBar(context, 'Successed');
                     }
                   },
                 ),
