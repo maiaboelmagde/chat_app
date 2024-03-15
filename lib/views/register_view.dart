@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class RegisterView extends StatefulWidget {
-  RegisterView({super.key});
+  const RegisterView({super.key});
   static const String id = 'RegisterView';
 
   @override
