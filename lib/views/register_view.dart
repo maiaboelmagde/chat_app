@@ -99,7 +99,7 @@ class _RegisterViewState extends State<RegisterView> {
                           isLoading = true;
                           setState(() {});
                           try {
-                            await registerUser(email ?? '', password ?? '');
+                            await registerUser(email!, password!);
                             showSnackBar(context, 'Successed');
                           } on FirebaseAuthException catch (e) {
                             String? message;
