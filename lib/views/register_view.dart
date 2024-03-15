@@ -1,7 +1,7 @@
 import 'package:chat_app/constants.dart';
 import 'package:chat_app/services/registeruser_using_firebase.dart';
 import 'package:chat_app/widgets/custom_button.dart';
-import 'package:chat_app/widgets/show_snack_bar.dart';
+import 'package:chat_app/helper/show_snack_bar.dart';
 import 'package:chat_app/widgets/text_field_custom.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
