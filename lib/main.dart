@@ -1,3 +1,4 @@
+import 'package:chat_app/views/chat_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:chat_app/firebase_options.dart';
 import 'package:chat_app/views/login_view.dart';
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
       //         onSurface: Color(0xff314F6A))),
       routes: {
         RegisterView.id: (context) => const RegisterView(),
-        LoginView.id: (context) => const LoginView()
+        LoginView.id: (context) => const LoginView(),
+        chatView.id: (context) => const chatView(),
       },
       initialRoute: LoginView.id,
     );
