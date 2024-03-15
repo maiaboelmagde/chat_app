@@ -1,5 +1,6 @@
 import 'package:chat_app/constants.dart';
 import 'package:chat_app/helper/show_snack_bar.dart';
+import 'package:chat_app/services/loginuser_using_firebase.dart';
 import 'package:chat_app/views/chat_view.dart';
 import 'package:chat_app/views/register_view.dart';
 import 'package:chat_app/widgets/custom_button.dart';
@@ -86,7 +87,7 @@ class _LoginViewState extends State<LoginView> {
                         try {
                           isLoding = true;
                           setState(() {});
-                          await loginUser();
+                          await loginUser(email!, password!);
                           showSnackBar(context, 'succeed');
                           Navigator.pushNamed(context, chatView.id);
                         } on FirebaseAuthException catch (e) {
@@ -132,10 +133,5 @@ class _LoginViewState extends State<LoginView> {
         ),
       ),
     );
-  }
-
-  Future<void> loginUser() async {
-    await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email!, password: password!);
   }
 }
