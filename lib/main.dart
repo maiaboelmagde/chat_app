@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
       //         surface: Color(0xff314F6A),
       //         onSurface: Color(0xff314F6A))),
       routes: {
-        RegisterView.id: (context) => RegisterView(),
-        LoginView.id: (context) => LoginView()
+        RegisterView.id: (context) => const RegisterView(),
+        LoginView.id: (context) => const LoginView()
       },
       initialRoute: LoginView.id,
     );

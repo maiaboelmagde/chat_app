@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class LoginView extends StatefulWidget {
-  LoginView({super.key});
+  const LoginView({super.key});
   static const String id = 'LoginView';
 
   @override
@@ -51,9 +51,9 @@ class _LoginViewState extends State<LoginView> {
               ),
               const SizedBox(height: 50),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Column(children: [
-                  Align(
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Sign In',
@@ -63,7 +63,7 @@ class _LoginViewState extends State<LoginView> {
                           color: Colors.white),
                     ),
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   TextFieldCustom(
                     hint: 'Email',
                     onchanged: (data) {
@@ -77,7 +77,7 @@ class _LoginViewState extends State<LoginView> {
                       password = data;
                     },
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   CustomButton(
                     text: 'Sign In',
                     ontap: () async {
