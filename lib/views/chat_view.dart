@@ -12,6 +12,7 @@ class ChatView extends StatelessWidget {
       FirebaseFirestore.instance.collection(messageCollection);
 
   TextEditingController controller = TextEditingController();
+  final _controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +39,7 @@ class ChatView extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ListView.builder(
+                        controller: _controller,
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (context, indx) {
                           return BubleMessage1stUser(
@@ -50,6 +52,10 @@ class ChatView extends StatelessWidget {
                     onSubmitted: (data) {
                       messages.add({'message': data, 'time': DateTime.now()});
                       controller.clear();
+                      _controller.animateTo(
+                          _controller.position.maxScrollExtent,
+                          duration: Duration(seconds: 1),
+                          curve: Curves.easeIn);
                     },
                   )
                 ],
