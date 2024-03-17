@@ -20,8 +20,8 @@ class _ChatViewState extends State<ChatView> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<QuerySnapshot>(
-        future: messages.get(),
+    return StreamBuilder<QuerySnapshot>(
+        stream: messages.orderBy('time').snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Scaffold(
@@ -53,7 +53,7 @@ class _ChatViewState extends State<ChatView> {
                   SendTextField(
                     controller: controller,
                     onSubmitted: (data) {
-                      messages.add({'message': data});
+                      messages.add({'message': data, 'time': DateTime.now()});
                       controller.clear();
                       setState(() {});
                     },
