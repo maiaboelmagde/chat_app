@@ -78,6 +78,7 @@ class _LoginViewState extends State<LoginView> {
                     onchanged: (data) {
                       password = data;
                     },
+                    obsecure: true,
                   ),
                   const SizedBox(height: 30),
                   CustomButton(

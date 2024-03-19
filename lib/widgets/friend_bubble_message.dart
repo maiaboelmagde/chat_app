@@ -23,7 +23,7 @@ class FriendBubleMessage extends StatelessWidget {
             topRight: Radius.circular(30),
             bottomLeft: Radius.circular(30),
           ),
-          color: Colors.blueGrey,
+          color: kPrimaryColor,
         ),
         child: Text(text),
       ),

@@ -23,7 +23,7 @@ class MyBubleMessage extends StatelessWidget {
             topRight: Radius.circular(30),
             bottomRight: Radius.circular(30),
           ),
-          color: kPrimaryColor,
+          color: Color(0xffC7EDE6),
         ),
         child: Text(text),
       ),

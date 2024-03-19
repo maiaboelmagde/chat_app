@@ -80,6 +80,7 @@ class _RegisterViewState extends State<RegisterView> {
                     onchanged: (data_2) {
                       password = data_2;
                     },
+                    obsecure: true,
                   ),
                   const SizedBox(height: 30),
                   TextFieldCustom(
@@ -87,6 +88,7 @@ class _RegisterViewState extends State<RegisterView> {
                     onchanged: (data_3) {
                       confirmedPassword = data_3;
                     },
+                    obsecure: true,
                   ),
                   const SizedBox(height: 30),
                   CustomButton(
