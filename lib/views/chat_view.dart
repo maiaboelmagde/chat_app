@@ -1,5 +1,6 @@
 import 'package:chat_app/constants.dart';
-import 'package:chat_app/widgets/buble_message_1st_user.dart';
+import 'package:chat_app/widgets/my_buble_message.dart';
+import 'package:chat_app/widgets/friend_bubble_message.dart';
 import 'package:chat_app/widgets/send_textfield.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class ChatView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String user_id = ModalRoute.of(context)!.settings.arguments as String;
     return StreamBuilder<QuerySnapshot>(
         stream: messages.orderBy('time', descending: true).snapshots(),
         builder: (context, snapshot) {
@@ -43,15 +45,22 @@ class ChatView extends StatelessWidget {
                         controller: _controller,
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (context, indx) {
-                          return BubleMessage1stUser(
-                            text: snapshot.data!.docs[indx]['message'],
-                          );
+                          return user_id == snapshot.data!.docs[indx]['id']
+                              ? MyBubleMessage(
+                                  text: snapshot.data!.docs[indx]['message'],
+                                )
+                              : FriendBubleMessage(
+                                  text: snapshot.data!.docs[indx]['message']);
                         }),
                   ),
                   SendTextField(
                     controller: controller,
                     onSubmitted: (data) {
-                      messages.add({'message': data, 'time': DateTime.now()});
+                      messages.add({
+                        'message': data,
+                        'time': DateTime.now(),
+                        'id': user_id
+                      });
                       controller.clear();
                       _controller.animateTo(
                           _controller.position.minScrollExtent,

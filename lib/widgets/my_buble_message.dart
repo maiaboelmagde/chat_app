@@ -1,8 +1,8 @@
 import 'package:chat_app/constants.dart';
 import 'package:flutter/material.dart';
 
-class BubleMessage1stUser extends StatelessWidget {
-  const BubleMessage1stUser({super.key, required this.text});
+class MyBubleMessage extends StatelessWidget {
+  const MyBubleMessage({super.key, required this.text});
   final String text;
 
   @override
