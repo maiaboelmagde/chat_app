@@ -17,7 +17,7 @@ class ChatView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream: messages.orderBy('time').snapshots(),
+        stream: messages.orderBy('time', descending: true).snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Scaffold(
@@ -39,6 +39,7 @@ class ChatView extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ListView.builder(
+                        reverse: true,
                         controller: _controller,
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (context, indx) {
@@ -53,7 +54,7 @@ class ChatView extends StatelessWidget {
                       messages.add({'message': data, 'time': DateTime.now()});
                       controller.clear();
                       _controller.animateTo(
-                          _controller.position.maxScrollExtent,
+                          _controller.position.minScrollExtent,
                           duration: Duration(seconds: 1),
                           curve: Curves.easeIn);
                     },
@@ -62,7 +63,7 @@ class ChatView extends StatelessWidget {
               ),
             );
           } else {
-            return const Text("There's an error");
+            return const Text("Loading");
           }
         });
   }
